@@ -8,6 +8,7 @@ Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
 URL:		http://web.taranis.org/drraw/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildArch:   noarch
 
 %description
 drraw is a simple web based presentation front-end for RRDtool that
@@ -24,15 +25,22 @@ pozwala w sposób interaktywny tworzyæ wykresy wed³ug w³asnego pomys³u.
 Definicja wykresu mo¿e byæ zmieniona na szablon, a ten naniesiony 
 na wiele plików RRD.
 
+%prep
 %setup -q
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install -d $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons
+install drraw.{cgi,conf} $RPM_BUILD_ROOT/home/services/html/cgi-bin/
+install icons/* $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES CONTRIBUTORS README TODO doc/*.html
+%doc CHANGES INSTALL  LICENSE  README.EVENTS  WISHLIST 
+%attr (755,root,root) /home/services/html/cgi-bin/drraw.cgi
+%attr (644,root,root) /home/services/html/cgi-bin/icons/*
+%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) /home/services/html/cgi-bin/drraw.conf
