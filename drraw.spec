@@ -1,14 +1,14 @@
 Summary:	Draw Round Robin Archives on the Web
-Summary(pl):	Drraw Rysowanie wykresów RRD na www
+Summary(pl):	Drraw - rysowanie wykresów RRD na WWW
 Name:		drraw
 Version:	2.1.1
-Release:	0
+Release:	0.1
 License:	BSD
 Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
 URL:		http://web.taranis.org/drraw/
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildArch:   noarch
 
 %description
 drraw is a simple web based presentation front-end for RRDtool that
@@ -28,19 +28,20 @@ na wiele plików RRD.
 %prep
 %setup -q
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons
-install drraw.{cgi,conf} $RPM_BUILD_ROOT/home/services/html/cgi-bin/
-install icons/* $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons/
+
+install drraw.{cgi,conf} $RPM_BUILD_ROOT/home/services/html/cgi-bin
+install icons/* $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES INSTALL  LICENSE  README.EVENTS  WISHLIST 
-%attr (755,root,root) /home/services/html/cgi-bin/drraw.cgi
-%attr (644,root,root) /home/services/html/cgi-bin/icons/*
+%doc CHANGES INSTALL LICENSE README.EVENTS WISHLIST 
+%attr(755,root,root) /home/services/html/cgi-bin/drraw.cgi
+# XXX: missing dir
+/home/services/html/cgi-bin/icons/*
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) /home/services/html/cgi-bin/drraw.conf
