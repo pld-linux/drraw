@@ -6,6 +6,7 @@ Release:	0.1
 License:	BSD
 Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
+Patch0:		%{name}-conf.patch
 URL:		http://web.taranis.org/drraw/
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,10 +28,12 @@ na wiele plików RRD.
 
 %prep
 %setup -q
+%patch -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons
+install -d $RPM_BUILD_ROOT/home/services/drraw
 
 install drraw.{cgi,conf} $RPM_BUILD_ROOT/home/services/html/cgi-bin
 install icons/* $RPM_BUILD_ROOT/home/services/html/cgi-bin/icons
@@ -42,6 +45,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES INSTALL LICENSE README.EVENTS WISHLIST 
 %attr(755,root,root) /home/services/html/cgi-bin/drraw.cgi
-# XXX: missing dir
+%attr(755,http,http) /home/services/drraw/
 /home/services/html/cgi-bin/icons/*
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) /home/services/html/cgi-bin/drraw.conf
