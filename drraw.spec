@@ -6,12 +6,25 @@ Release:	0
 License:	BSD
 Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
-#Patch0:		%{name}-perl-install.patch
 URL:		http://web.taranis.org/drraw/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-drraw is a simple web based presentation front-end for RRDtool that allows you to interactively build graphs of your own design. A graph definition can be turned into a template which may be applied to many Round Robin Database files. drraw specializes in providing an easy mean of displaying data stored with RRDtool and does not care about how the data is collected, making it a great complement to other RRDtool front-ends.
+drraw is a simple web based presentation front-end for RRDtool that
+allows you to interactively build graphs of your own design. A graph
+definition can be turned into a template which may be applied to many
+Round Robin Database files. drraw specializes in providing an easy
+mean of displaying data stored with RRDtool and does not care about
+how the data is collected, making it a great complement to other
+RRDtool front-ends.
+
+%description -l pl
+drraw jest prostym, opartym na WWW front-endem dla RRDtoola, który
+pozwala w sposób interaktywny tworzyæ wykresy wed³ug w³asnego pomys³u.
+Definicja wykresu mo¿e byæ zmieniona na szablon, a ten naniesiony 
+na wiele plików RRD.
+
+%setup -q
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -23,10 +36,3 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES CONTRIBUTORS README TODO doc/*.html
-%attr(755,root,root) %{_bindir}/rrd*
-%{perl_vendorlib}/RRDp.pm
-%{perl_vendorarch}/*.pm
-%dir %{perl_vendorarch}/auto/RRDs
-%{perl_vendorarch}/auto/RRDs/RRDs.bs
-%attr(755,root,root) %{perl_vendorarch}/auto/RRDs/RRDs.so
-%{_mandir}/man1/*
