@@ -6,6 +6,7 @@ Release:	0.1
 License:	BSD
 Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
+# Source0-md5:	205ab5ff629c9922bba36958bce8aa95
 Patch0:		%{name}-conf.patch
 URL:		http://web.taranis.org/drraw/
 BuildArch:	noarch
