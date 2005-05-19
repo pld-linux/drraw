@@ -1,12 +1,12 @@
 Summary:	Draw Round Robin Archives on the Web
 Summary(pl):	Drraw - rysowanie wykresów RRD na WWW
 Name:		drraw
-Version:	2.1.1
+Version:	2.1.2
 Release:	0.1
 License:	BSD
 Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
-# Source0-md5:	205ab5ff629c9922bba36958bce8aa95
+# Source0-md5:	fccef17a09d858b3ffdeb49c08455104
 Patch0:		%{name}-conf.patch
 URL:		http://web.taranis.org/drraw/
 BuildArch:	noarch
