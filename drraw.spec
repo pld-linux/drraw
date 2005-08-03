@@ -1,14 +1,15 @@
 Summary:	Draw Round Robin Archives on the Web
 Summary(pl):	Drraw - rysowanie wykresów RRD na WWW
 Name:		drraw
-Version:	2.1.2
+Version:	2.1.3
 Release:	0.1
 License:	BSD
 Group:		Applications/Databases
 Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
-# Source0-md5:	fccef17a09d858b3ffdeb49c08455104
+# Source0-md5:	99466034678b46784fcd4463882b6c8a
 Patch0:		%{name}-conf.patch
 URL:		http://web.taranis.org/drraw/
+BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,6 +31,7 @@ na wiele plików RRD.
 %prep
 %setup -q
 %patch -p1
+sed -i 's@^#! /usr/local/bin/perl@#!/usr/bin/perl@' drraw.cgi
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,4 +50,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /home/services/html/cgi-bin/drraw.cgi
 %attr(755,http,http) /home/services/drraw/
 /home/services/html/cgi-bin/icons/*
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) /home/services/html/cgi-bin/drraw.conf
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) /home/services/html/cgi-bin/drraw.conf
