@@ -30,7 +30,7 @@ na wiele plików RRD.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 sed -i 's@^#! /usr/local/bin/perl@#!/usr/bin/perl@' drraw.cgi
 
 %install
