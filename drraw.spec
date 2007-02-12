@@ -1,5 +1,5 @@
 Summary:	Draw Round Robin Archives on the Web
-Summary(pl.UTF-8):   Drraw - rysowanie wykresów RRD na WWW
+Summary(pl.UTF-8):	Drraw - rysowanie wykresów RRD na WWW
 Name:		drraw
 Version:	2.1.3
 Release:	0.1
