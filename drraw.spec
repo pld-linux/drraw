@@ -1,5 +1,5 @@
 Summary:	Draw Round Robin Archives on the Web
-Summary(pl):	Drraw - rysowanie wykresów RRD na WWW
+Summary(pl.UTF-8):   Drraw - rysowanie wykresÃ³w RRD na WWW
 Name:		drraw
 Version:	2.1.3
 Release:	0.1
@@ -22,11 +22,11 @@ mean of displaying data stored with RRDtool and does not care about
 how the data is collected, making it a great complement to other
 RRDtool front-ends.
 
-%description -l pl
-drraw jest prostym, opartym na WWW front-endem dla RRDtoola, który
-pozwala w sposób interaktywny tworzyæ wykresy wed³ug w³asnego pomys³u.
-Definicja wykresu mo¿e byæ zmieniona na szablon, a ten naniesiony 
-na wiele plików RRD.
+%description -l pl.UTF-8
+drraw jest prostym, opartym na WWW front-endem dla RRDtoola, ktÃ³ry
+pozwala w sposÃ³b interaktywny tworzyÄ‡ wykresy wedÅ‚ug wÅ‚asnego pomysÅ‚u.
+Definicja wykresu moÅ¼e byÄ‡ zmieniona na szablon, a ten naniesiony 
+na wiele plikÃ³w RRD.
 
 %prep
 %setup -q
