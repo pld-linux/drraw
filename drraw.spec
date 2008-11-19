@@ -1,12 +1,15 @@
+#
+# TODO:	move do %{_datadir}/%{name} (use webapps)
+#
 Summary:	Draw Round Robin Archives on the Web
 Summary(pl.UTF-8):	Drraw - rysowanie wykresów RRD na WWW
 Name:		drraw
-Version:	2.1.3
-Release:	0.1
+Version:	2.2
+Release:	0.b1.1
 License:	BSD
 Group:		Applications/Databases
-Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}.tgz
-# Source0-md5:	99466034678b46784fcd4463882b6c8a
+Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}b1.tar.gz
+# Source0-md5:	dde40cc5957d0aa82f58fb39a25e68d7
 Patch0:		%{name}-conf.patch
 URL:		http://web.taranis.org/drraw/
 BuildRequires:	sed >= 4.0
@@ -25,13 +28,12 @@ RRDtool front-ends.
 %description -l pl.UTF-8
 drraw jest prostym, opartym na WWW front-endem dla RRDtoola, który
 pozwala w sposób interaktywny tworzyć wykresy według własnego pomysłu.
-Definicja wykresu może być zmieniona na szablon, a ten naniesiony 
+Definicja wykresu może być zmieniona na szablon, a ten naniesiony
 na wiele plików RRD.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}b1
 %patch0 -p1
-sed -i 's@^#! /usr/local/bin/perl@#!/usr/bin/perl@' drraw.cgi
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -46,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES INSTALL LICENSE README.EVENTS WISHLIST 
+%doc CHANGES INSTALL LICENSE README.EVENTS
 %attr(755,root,root) /home/services/html/cgi-bin/drraw.cgi
 %attr(755,http,http) /home/services/drraw/
 /home/services/html/cgi-bin/icons/*
