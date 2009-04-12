@@ -1,15 +1,18 @@
 #
 # TODO:	move do %{_datadir}/%{name} (use webapps)
 #
+
+%define	_beta	b2
+
 Summary:	Draw Round Robin Archives on the Web
 Summary(pl.UTF-8):	Drraw - rysowanie wykresów RRD na WWW
 Name:		drraw
 Version:	2.2
-Release:	0.b1.1
+Release:	0.%{_beta}.1
 License:	BSD
 Group:		Applications/Databases
-Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}b1.tar.gz
-# Source0-md5:	dde40cc5957d0aa82f58fb39a25e68d7
+Source0:	http://web.taranis.org/drraw/dist/%{name}-%{version}%{_beta}.tar.gz
+# Source0-md5:	704ac58d2b8d0141e38897b1fe86d8a0
 Patch0:		%{name}-conf.patch
 URL:		http://web.taranis.org/drraw/
 BuildRequires:	sed >= 4.0
@@ -32,7 +35,7 @@ Definicja wykresu może być zmieniona na szablon, a ten naniesiony
 na wiele plików RRD.
 
 %prep
-%setup -q -n %{name}-%{version}b1
+%setup -q -n %{name}-%{version}%{_beta}
 %patch0 -p1
 
 %install
